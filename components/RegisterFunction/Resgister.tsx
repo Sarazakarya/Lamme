@@ -1,0 +1,24 @@
+import React from "react";
+import { RegisterT } from "../../lib/types/Auth";
+
+const Resgister = async (data: RegisterT) => {
+  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+    : "http://localhost:3000/api";
+  const response = await fetch(`${baseUrl}/auth/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.message || "Something went wrong");
+  }
+  return result;
+};
+
+export default Resgister;
