@@ -2,10 +2,8 @@ import React from "react";
 import { RegisterT } from "../../lib/types/Auth";
 
 const Resgister = async (data: RegisterT) => {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL
-    ? `https://${process.env.NEXT_PUBLIC_API_URL}/api`
-    : "http://localhost:3000/api";
-  const response = await fetch(`${baseUrl}/auth/register`, {
+ const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+  const response = await fetch(`${baseUrl}/api/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -100,7 +100,7 @@ export default function Home() {
 
       {/* Contact Section */}
       <div className="w-full flex justify-center px-2 mt-10 mb-20">
-        <div className="max-w-5xl w-full p-8 md:p-20 rounded-3xl bg-zinc-900/50 dark:bg-gradient-to-br from-zinc-900 via-black to-zinc-900 border border-zinc-200/10 dark:border-white/5 relative overflow-hidden text-center shadow-2xl">
+        <div className="max-w-5xl w-full p-8 md:p-20 rounded-3xl  dark:bg-gradient-to-br from-zinc-900 via-black to-zinc-900 border border-zinc-200/10 dark:border-white/5 relative overflow-hidden text-center shadow-2xl">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-green-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 
           <div className="relative z-10 flex flex-col items-center gap-6 md:gap-8">

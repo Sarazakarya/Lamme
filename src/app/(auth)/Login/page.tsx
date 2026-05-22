@@ -8,6 +8,7 @@ import { loginSchema } from "../../../../lib/sechma/Auth/AuthSechma";
 import Login from "../../../../components/LoginFunction/Login";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { FcGoogle } from "react-icons/fc"; 
 
 const Page = () => {
   const router = useRouter();
@@ -34,7 +35,7 @@ const Page = () => {
         });
         return;
       }
-      toast.success("Welcom To Lamme!", {
+      toast.success("Welcome To Lamme!", {
         style: { backgroundColor: "#22c55e", color: "white" },
       });
       router.push("/");
@@ -44,6 +45,17 @@ const Page = () => {
       });
     }
   };
+
+  const handleGoogleLogin = async () => {
+    try {
+      toast.info("Connecting to Google...", {
+        style: { backgroundColor: "#3b82f6", color: "white" },
+      });
+    } catch (error) {
+      toast.error("Google sign in failed!");
+    }
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-zinc-50 dark:bg-zinc-950 p-4">
       <form
@@ -94,8 +106,25 @@ const Page = () => {
           {isSubmitting ? "Signing In..." : "Sign In"}
         </button>
 
+    
+        <div className="relative flex items-center justify-center my-1">
+          <div className="absolute w-full border-t border-zinc-200 dark:border-zinc-800"></div>
+          <span className="relative bg-white dark:bg-zinc-900 px-3 text-xs text-zinc-400 uppercase">
+            Or continue with
+          </span>
+        </div>
+
+        <button
+          type="button"
+          onClick={handleGoogleLogin}
+          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-750 hover:text-black dark:text-zinc-200 font-medium rounded-lg text-sm transition-all duration-150 cursor-pointer active:scale-[0.98]"
+        >
+          <FcGoogle className="w-5 h-5" />
+          Google
+        </button>
+
         <p className="text-center text-xs text-zinc-500 dark:text-zinc-400 mt-2">
-          Do not have an account?
+          Do not have an account?{" "}
           <Link
             href={"/Register"}
             className="text-green-500 hover:underline cursor-pointer font-medium"
