@@ -10,13 +10,13 @@ export default function Home() {
       {/* Hero Section */}
       <div className="flex flex-col gap-5 w-full md:flex-1 min-w-[300px]">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight max-w-2xl leading-tight md:leading-none">
-          <span className="bg-gradient-to-b from-green-400 to-green-600 text-transparent bg-clip-text block">
+          <span className="bg-gradient-to-b from-green-400 to-green-600 text-transparent bg-clip-text block pb-1">
             BETTER DESIGN
           </span>
-          <span className="bg-gradient-to-b from-zinc-400 to-zinc-500 dark:from-gray-300 dark:to-gray-400 text-transparent bg-clip-text block my-2">
+          <span className="bg-gradient-to-b from-zinc-400 to-zinc-500 dark:from-gray-300 dark:to-gray-400 text-transparent bg-clip-text block my-2 pb-1">
             FOR YOUR DIGITAL
           </span>
-          <span className="bg-gradient-to-b from-zinc-500 to-zinc-600 dark:from-gray-200 dark:to-gray-300 text-transparent bg-clip-text block">
+          <span className="bg-gradient-to-b from-zinc-500 to-zinc-600 dark:from-gray-200 dark:to-gray-300 text-transparent bg-clip-text block pb-1">
             PRODUCTS
           </span>
         </h1>

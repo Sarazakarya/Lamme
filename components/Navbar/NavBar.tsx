@@ -61,14 +61,17 @@ const NavBar = () => {
 
       <div className=" md:hidden flex justify-center items-center gap-3">
         <span className="text-sm font-medium text-green-500">
-         {session?.user?.name}
+          {session?.user?.name}
         </span>
         <Mode />
 
-        <FiAlignJustify
-          className="text-2xl cursor-pointer"
+        <button
+          type="button"
           onClick={() => setOpen(!open)}
-        />
+          className="text-2xl cursor-pointer bg-transparent border-none p-0"
+        >
+          <FiAlignJustify />
+        </button>
 
         <DropDown open={open} close={() => setOpen(false)} />
       </div>
