@@ -40,7 +40,7 @@ export const authOptions: NextAuthOptions = {
 
           return {
             id: user._id.toString(),
-            name: user.name || "User",
+            name: user.name || user.email.split("@")[0] || "User",
             email: user.email,
           };
         } catch (err) {
@@ -53,29 +53,47 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account }) {
       if (account?.provider === "google") {
+        if (!user.email) {
+          console.error("Google Auth failed: Email is missing");
+          return false;
+        }
+
         await connect();
         const existingUser = await users.findOne({ email: user.email });
+
         if (!existingUser) {
+          const hashedPassword = await bcrypt.hash(
+            Math.random().toString(36).slice(-8),
+            10,
+          );
+
           await users.create({
-            username: user.name?.replace(/\s+/g, "").toLowerCase() || "user",
+            name: user.name || user.email.split("@")[0] || "Google User",
             email: user.email,
-            password: "",
+            password: hashedPassword,
+            image: user.image || "",
           });
         }
       }
       return true;
     },
 
-    async jwt({ token, user }: { token: JWT; user: any }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+        token.picture = user.image;
       }
       return token;
     },
 
-    async session({ session, token }: { session: Session; token: JWT }) {
+    async session({ session, token }: { session: any; token: JWT }) {
       if (token && session.user) {
         session.user.id = token.id as string;
+        session.user.name = token.name as string;
+        session.user.email = token.email as string;
+        session.user.image = token.picture as string;
       }
       return session;
     },

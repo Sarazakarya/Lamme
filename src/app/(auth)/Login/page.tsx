@@ -8,7 +8,8 @@ import { loginSchema } from "../../../../lib/sechma/Auth/AuthSechma";
 import Login from "../../../../components/LoginFunction/Login";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { FcGoogle } from "react-icons/fc"; 
+import { FcGoogle } from "react-icons/fc";
+import { signIn } from "next-auth/react";
 
 const Page = () => {
   const router = useRouter();
@@ -48,9 +49,8 @@ const Page = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      toast.info("Connecting to Google...", {
-        style: { backgroundColor: "#3b82f6", color: "white" },
-      });
+      await signIn("google", { callbackUrl: "/" });
+   
     } catch (error) {
       toast.error("Google sign in failed!");
     }
@@ -106,7 +106,6 @@ const Page = () => {
           {isSubmitting ? "Signing In..." : "Sign In"}
         </button>
 
-    
         <div className="relative flex items-center justify-center my-1">
           <div className="absolute w-full border-t border-zinc-200 dark:border-zinc-800"></div>
           <span className="relative bg-white dark:bg-zinc-900 px-3 text-xs text-zinc-400 uppercase">
