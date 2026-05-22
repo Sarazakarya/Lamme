@@ -17,7 +17,6 @@ const DropDown = ({ open, close }: DropDownProps) => {
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
       }`}
-      onClick={close}
     >
       <div
         onClick={(e) => e.stopPropagation()}
