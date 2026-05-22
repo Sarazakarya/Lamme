@@ -19,7 +19,7 @@ const NavBar = () => {
 
       <div className=" gap-3 items-center hidden md:flex">
         <Mode />
-        
+
         {links.map((ele, ind) => {
           const isActive =
             ele.link === path ||
@@ -41,7 +41,7 @@ const NavBar = () => {
         ) : status === "authenticated" ? (
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-green-500">
-              Welcome, {session?.user?.name}
+              {session?.user?.name}
             </span>
             <button
               onClick={() => signOut({ callbackUrl: "/Login" })}
@@ -60,9 +60,9 @@ const NavBar = () => {
       </div>
 
       <div className=" md:hidden flex justify-center items-center gap-3">
-          <span className="text-sm font-medium text-green-500">
-              Welcome, {session?.user?.name}
-            </span>
+        <span className="text-sm font-medium text-green-500">
+         {session?.user?.name}
+        </span>
         <Mode />
 
         <FiAlignJustify

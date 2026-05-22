@@ -12,12 +12,18 @@ const DropDown = ({ open, close }: DropDownProps) => {
   const { data: session, status } = useSession();
   return (
     <div
-      className={`fixed inset-0 z-10 bg-black/50 transition-opacity duration-300 ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+      className={`fixed inset-0 z-50 bg-black/50 transition-opacity duration-300 ${
+        open
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+      }`}
       onClick={close}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`h-full z-20 bg-(--card-bg)  rounded-md shadow-lg w-80   fixed top-0 left-0 flex flex-col gap-5 ease-in-out duration-300 transition-transform transform ${open ? "translate-x-0" : "-translate-x-full"} `}
+        className={`h-full fixed top-0 left-0 flex flex-col gap-5 ease-in-out duration-300 transition-transform transform ${
+          open ? "translate-x-0" : "-translate-x-full"
+        } bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 shadow-2xl w-80 z-50`}
       >
         <div className="flex justify-end">
           {" "}
@@ -29,13 +35,13 @@ const DropDown = ({ open, close }: DropDownProps) => {
           </button>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-1 px-2">
           {links.map((ele, id) => (
             <Link
               key={id}
               href={ele.link}
               onClick={close}
-              className="bg-(--card-bg) text-(--text) font-medium transition-all duration-400 px-4 py-3 border-b border-gray-300 hover:bg-green-400 hover:text-white block w-full"
+              className="text-zinc-800 dark:text-zinc-200 font-medium transition-all duration-300 px-4 py-3 border-b dark:border-zinc-100  hover:bg-green-500 hover:text-white dark:hover:bg-green-600 rounded-md block w-full"
             >
               {ele.name}
             </Link>
