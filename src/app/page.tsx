@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-wrap items-center justify-between gap-8 px-4 overflow-x-hidden pt-28 md:pt-12">
+    <div className="flex flex-wrap items-center justify-between gap-8 px-4 overflow-x-hidden pt-5 md:pt-12">
       {/* Hero Section */}
       <div className="flex flex-col gap-5 w-full md:flex-1 min-w-[300px]">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight max-w-2xl leading-tight md:leading-none">
